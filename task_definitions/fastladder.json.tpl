@@ -67,5 +67,47 @@
         "value": "${fastladder_mysql_root_password}"
       }
     ]
+  },
+  {
+    "image": "${account_id}.dkr.ecr.${aws_region}.amazonaws.com/${fastladder}-backup",
+    "name": "${fastladder}-backup",
+    "memory": ${fastladder_backup_memory},
+    "essential": true,
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "${aws_region}",
+        "awslogs-group": "${fastladder}-backup"
+      }
+    },
+    "links": [
+      "${fastladder}-mysql"
+    ],
+    "environment": [
+      {
+        "name": "MYSQL_HOST",
+        "value": "${fastladder}-mysql"
+      },
+      {
+        "name": "MYSQL_DATABASE",
+        "value": "${fastladder_mysql_database}"
+      },
+      {
+        "name": "MYSQL_USER",
+        "value": "root"
+      },
+      {
+        "name": "MYSQL_PASSWORD",
+        "value": "${fastladder_mysql_root_password}"
+      },
+      {
+        "name": "AWS_DEFAULT_REGION",
+        "value": "${aws_region}"
+      },
+      {
+        "name": "S3_BUCKET",
+        "value": "${fastladder}-backup"
+      }
+    ]
   }
 ]

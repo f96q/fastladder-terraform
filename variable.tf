@@ -11,12 +11,20 @@ variable "aws_ecs_task_definition_fastladder_rails_memory" {
 }
 
 variable "aws_ecs_task_definition_fastladder_mysql_memory" {
-  default = "384"
+  default = "256"
+}
+
+variable "aws_ecs_task_definition_fastladder_backup_memory" {
+  default = "128"
 }
 
 variable "aws_ecs_task_definition_fastladder_mysql_root_password" {}
 
 variable "aws_ecr_repository_create" {
+  default = "true"
+}
+
+variable "aws_s3_bucket_fastladder_backup_create" {
   default = "true"
 }
 

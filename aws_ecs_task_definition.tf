@@ -10,6 +10,7 @@ data "template_file" "aws_ecs_task_definition_fastladder" {
     fastladder_mysql_memory = "${var.aws_ecs_task_definition_fastladder_mysql_memory}"
     fastladder_mysql_database = "${var.fastladder}"
     fastladder_mysql_root_password = "${var.aws_ecs_task_definition_fastladder_mysql_root_password}"
+    fastladder_backup_memory = "${var.aws_ecs_task_definition_fastladder_backup_memory}"
   }
 }
 
