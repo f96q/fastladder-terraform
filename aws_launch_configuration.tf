@@ -36,15 +36,16 @@ data "aws_ami" "ecs_optimized" {
   }
 }
 
-resource "aws_instance" "fastladder" {
-  ami = "${data.aws_ami.ecs_optimized.id}"
-  instance_type = "${var.aws_instance_fastladder_instance_type}"
+resource "aws_launch_configuration" "fastladder" {
+  image_id      = "${data.aws_ami.ecs_optimized.id}"
+  instance_type = "${var.aws_launch_configuration_fastladder_instance_type}"
   iam_instance_profile = "${aws_iam_instance_profile.fastladder_ec2.name}"
-  vpc_security_group_ids = ["${aws_security_group.fastladder_ec2.id}"]
+  security_groups = ["${aws_security_group.fastladder_ec2.id}"]
   user_data       = "${data.template_file.aws_instance_fastladder_user_data.rendered}"
-  subnet_id       = "${aws_default_subnet.1a.id}"
   associate_public_ip_address = true
-  tags {
-    Name = "${var.fastladder}"
+  spot_price = "${var.aws_launch_configuration_fastladder_spot_price}"
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
