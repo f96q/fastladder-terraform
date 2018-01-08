@@ -7,7 +7,7 @@ variable "aws_spot_fleet_request_fastladder_instance_type" {
 }
 
 variable "aws_spot_fleet_request_fastladder_spot_price" {
-  default = "0.0036"
+  default = "0.0152"
 }
 
 variable "aws_ecs_task_definition_fastladder_rails_memory" {
