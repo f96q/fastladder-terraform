@@ -40,7 +40,7 @@ resource "aws_spot_fleet_request" "fastladder" {
   iam_fleet_role  = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-ec2-spot-fleet-tagging-role"
   spot_price      = "${var.aws_spot_fleet_request_fastladder_spot_price}"
   target_capacity = "${var.aws_spot_fleet_request_fastladder_target_capacity}"
-  valid_until     = "2019-11-04T20:44:20Z"
+  valid_until     = "${var.aws_spot_fleet_request_fastladder_valid_until}"
   terminate_instances_with_expiration = true
 
   launch_specification {

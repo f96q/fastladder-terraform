@@ -26,6 +26,10 @@ variable "aws_spot_fleet_request_fastladder_target_capacity" {
   default = "1"
 }
 
+variable "aws_spot_fleet_request_fastladder_valid_until" {
+  default = "2019-11-04T20:44:20Z"
+}
+
 variable "aws_ecs_task_definition_fastladder_mysql_root_password" {}
 
 variable "aws_ecr_repository_create" {
