@@ -1,5 +1,5 @@
 data "template_file" "fastladder_backup_policy" {
-  template = "${file("policies/fastladder_backup_policy.json.tpl")}"
+  template = "${file("modules/fastladder/policies/fastladder_backup_policy.json.tpl")}"
 
   vars {
     bucket = "${var.fastladder}-backup"

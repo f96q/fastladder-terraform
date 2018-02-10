@@ -1,5 +1,5 @@
 data "template_file" "aws_instance_fastladder_user_data" {
-  template = "${file("user_data/ecs.sh.tpl")}"
+  template = "${file("modules/fastladder/user_data/ecs.sh.tpl")}"
 
   vars {
     ecs_cluster = "${var.fastladder}"

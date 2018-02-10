@@ -1,5 +1,5 @@
 data "template_file" "aws_ecs_task_definition_fastladder" {
-  template = "${file("task_definitions/fastladder.json.tpl")}"
+  template = "${file("modules/fastladder/task_definitions/fastladder.json.tpl")}"
 
   vars {
     account_id = "${data.aws_caller_identity.current.account_id}"
@@ -15,7 +15,7 @@ data "template_file" "aws_ecs_task_definition_fastladder" {
 }
 
 data "template_file" "aws_ecs_task_definition_fastladder_migration" {
-  template = "${file("task_definitions/fastladder_migration.json.tpl")}"
+  template = "${file("modules/fastladder/task_definitions/fastladder_migration.json.tpl")}"
 
   vars {
     account_id = "${data.aws_caller_identity.current.account_id}"
