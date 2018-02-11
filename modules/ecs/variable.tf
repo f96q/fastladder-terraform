@@ -34,14 +34,18 @@ variable "aws_ecs_task_definition_fastladder_mysql_root_password" {
   default = ""
 }
 
-variable "aws_ecr_repository_create" {
-  default = "true"
-}
-
-variable "aws_s3_bucket_fastladder_backup_create" {
-  default = "true"
-}
-
 variable "fastladder_secret_key_base" {
+  default = ""
+}
+
+variable "aws_default_vpc_default_id" {
+  default = ""
+}
+
+variable "aws_default_subnet_1a_id" {
+  default = ""
+}
+
+variable "aws_iam_instance_profile_fastladder_ec2_name" {
   default = ""
 }

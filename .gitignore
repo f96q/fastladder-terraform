@@ -1,6 +1,1 @@
-terraform.sh
-terraform.tfstate
-terraform.tfstate.backup
-terraform.tf
 .terraform
-

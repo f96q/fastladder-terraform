@@ -1,6 +1,6 @@
 resource "aws_security_group" "fastladder_ec2" {
   name = "${var.fastladder}-ec2"
-  vpc_id = "${aws_default_vpc.default.id}"
+  vpc_id = "${var.aws_default_vpc_default_id}"
 
   ingress = {
     from_port = 80

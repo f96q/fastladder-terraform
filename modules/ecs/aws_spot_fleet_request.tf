@@ -1,5 +1,5 @@
 data "template_file" "aws_instance_fastladder_user_data" {
-  template = "${file("modules/fastladder/user_data/ecs.sh.tpl")}"
+  template = "${file("../../modules/ecs/user_data/ecs.sh.tpl")}"
 
   vars {
     ecs_cluster = "${var.fastladder}"
@@ -46,10 +46,10 @@ resource "aws_spot_fleet_request" "fastladder" {
   launch_specification {
     ami = "${data.aws_ami.ecs_optimized.id}"
     instance_type = "${var.aws_spot_fleet_request_fastladder_instance_type}"
-    iam_instance_profile = "${aws_iam_instance_profile.fastladder_ec2.name}"
+    iam_instance_profile = "${var.aws_iam_instance_profile_fastladder_ec2_name}"
     vpc_security_group_ids = ["${aws_security_group.fastladder_ec2.id}"]
     user_data       = "${data.template_file.aws_instance_fastladder_user_data.rendered}"
-    subnet_id       = "${aws_default_subnet.1a.id}"
+    subnet_id       = "${var.aws_default_subnet_1a_id}"
     associate_public_ip_address = true
 
     tags {
