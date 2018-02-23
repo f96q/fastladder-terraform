@@ -1,5 +1,5 @@
 output "fastladder" {
-  value = "${module.common.fastladder}"
+  value = "${module.config.fastladder}"
 }
 
 output "aws_iam_instance_profile_fastladder_ec2_name" {

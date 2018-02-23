@@ -1,6 +1,6 @@
-module "common" {
-  fastladder ="${lookup(var.common, "${terraform.workspace}.fastladder", var.app["default.fastladder"])}"
-  source = "../../modules/common"
+module "config" {
+  fastladder ="${lookup(var.config, "${terraform.workspace}.fastladder", var.config["default.fastladder"])}"
+  source = "../../modules/config"
 }
 
 module "vpc" {
@@ -8,16 +8,16 @@ module "vpc" {
 }
 
 module "iam" {
-  fastladder = "${module.common.fastladder}"
+  fastladder = "${module.config.fastladder}"
   source = "../../modules/iam"
 }
 
 module "ecr" {
-  fastladder = "${module.common.fastladder}"
+  fastladder = "${module.config.fastladder}"
   source = "../../modules/ecr"
 }
 
 module "s3" {
-  fastladder = "${module.common.fastladder}"
+  fastladder = "${module.config.fastladder}"
   source = "../../modules/s3"
 }

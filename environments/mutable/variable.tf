@@ -1,4 +1,4 @@
-variable "common" {
+variable "config" {
   default = {
     default.fastladder = "fastladder"
     stg.fastladder = "fastladder-stg"
