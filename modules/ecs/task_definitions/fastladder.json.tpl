@@ -1,19 +1,19 @@
 [
   {
-    "image": "${account_id}.dkr.ecr.${aws_region}.amazonaws.com/${fastladder}",
+    "image": "${account_id}.dkr.ecr.${aws_region}.amazonaws.com/${fastladder}-rails",
     "name": "${fastladder}-rails",
     "memory": ${fastladder_rails_memory},
     "essential": true,
+    "links": [
+      "${fastladder}-mysql"
+    ],
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
         "awslogs-region": "${aws_region}",
-        "awslogs-group": "${fastladder}"
+        "awslogs-group": "${fastladder}-rails"
       }
     },
-    "links": [
-      "${fastladder}-mysql"
-    ],
     "portMappings": [
       {
         "containerPort": 5000,
@@ -23,7 +23,7 @@
    "environment": [
       {
         "name": "SECRET_KEY_BASE",
-        "value": "${fastladder_secret_key_base}"
+        "value": "${fastladder_rails_secret_key_base}"
       },
       {
         "name": "RAILS_LOG_TO_STDOUT",
@@ -44,6 +44,12 @@
     "name": "${fastladder}-mysql",
     "memory" : ${fastladder_mysql_memory},
     "essential": true,
+    "mountPoints": [
+      {
+        "sourceVolume": "${fastladder}-mysql",
+        "containerPath": "/docker-entrypoint-initdb.d"
+      }
+    ],
     "logConfiguration": {
       "logDriver": "awslogs",
       "options": {
@@ -51,12 +57,6 @@
         "awslogs-group": "${fastladder}-mysql"
       }
     },
-    "mountPoints": [
-      {
-        "sourceVolume": "${fastladder}-mysql",
-        "containerPath": "/var/lib/mysql"
-      }
-    ],
     "environment": [
       {
         "name": "MYSQL_DATABASE",
@@ -65,48 +65,6 @@
       {
         "name": "MYSQL_ROOT_PASSWORD",
         "value": "${fastladder_mysql_root_password}"
-      }
-    ]
-  },
-  {
-    "image": "${account_id}.dkr.ecr.${aws_region}.amazonaws.com/${fastladder}-backup",
-    "name": "${fastladder}-backup",
-    "memory": ${fastladder_backup_memory},
-    "essential": true,
-    "logConfiguration": {
-      "logDriver": "awslogs",
-      "options": {
-        "awslogs-region": "${aws_region}",
-        "awslogs-group": "${fastladder}-backup"
-      }
-    },
-    "links": [
-      "${fastladder}-mysql"
-    ],
-    "environment": [
-      {
-        "name": "MYSQL_HOST",
-        "value": "${fastladder}-mysql"
-      },
-      {
-        "name": "MYSQL_DATABASE",
-        "value": "${fastladder_mysql_database}"
-      },
-      {
-        "name": "MYSQL_USER",
-        "value": "root"
-      },
-      {
-        "name": "MYSQL_PASSWORD",
-        "value": "${fastladder_mysql_root_password}"
-      },
-      {
-        "name": "AWS_DEFAULT_REGION",
-        "value": "${aws_region}"
-      },
-      {
-        "name": "S3_BUCKET",
-        "value": "${fastladder}-backup"
       }
     ]
   }

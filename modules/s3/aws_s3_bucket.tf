@@ -1,3 +1,3 @@
-resource "aws_s3_bucket" "fastladder_backup" {
-  bucket = "${var.fastladder}-backup"
+resource "aws_s3_bucket" "fastladder_s3" {
+  bucket = "${var.fastladder}"
 }

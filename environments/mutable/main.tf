@@ -4,6 +4,7 @@ module "config" {
 }
 
 module "vpc" {
+  fastladder = "${module.config.fastladder}"
   source = "../../modules/vpc"
 }
 

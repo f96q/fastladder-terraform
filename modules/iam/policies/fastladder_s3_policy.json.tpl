@@ -4,8 +4,7 @@
     {
       "Effect": "Allow",
       "Action": [
-        "s3:GetObject",
-        "s3:PutObject"
+        "s3:GetObject"
       ],
       "Resource": [
         "arn:aws:s3:::${bucket}/*"

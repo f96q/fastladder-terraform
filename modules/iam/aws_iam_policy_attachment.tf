@@ -4,8 +4,8 @@ resource "aws_iam_policy_attachment" "fastladder_ecs" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonEC2ContainerServiceforEC2Role"
 }
 
-resource "aws_iam_policy_attachment" "fastladder_backup" {
-  name = "${var.fastladder}-backup"
+resource "aws_iam_policy_attachment" "fastladder_s3" {
+  name = "${var.fastladder}-s3"
   roles = ["${aws_iam_role.fastladder_ec2.name}"]
-  policy_arn = "${aws_iam_policy.fastladder_backup.arn}"
+  policy_arn = "${aws_iam_policy.fastladder_s3.arn}"
 }
