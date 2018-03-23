@@ -1,24 +1,19 @@
-module "config" {
-  fastladder ="${lookup(var.config, "${terraform.workspace}.fastladder", var.config["default.fastladder"])}"
-  source = "../../modules/config"
-}
-
 module "vpc" {
-  fastladder = "${module.config.fastladder}"
+  fastladder = "${lookup(var.config, "${terraform.workspace}.fastladder", var.config["default.fastladder"])}"
   source = "../../modules/vpc"
 }
 
 module "iam" {
-  fastladder = "${module.config.fastladder}"
+  fastladder = "${module.vpc.fastladder}"
   source = "../../modules/iam"
 }
 
 module "ecr" {
-  fastladder = "${module.config.fastladder}"
+  fastladder = "${module.vpc.fastladder}"
   source = "../../modules/ecr"
 }
 
 module "s3" {
-  fastladder = "${module.config.fastladder}"
+  fastladder = "${module.vpc.fastladder}"
   source = "../../modules/s3"
 }

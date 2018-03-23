@@ -1,3 +1,0 @@
-variable "fastladder" {
-  default = "fastladder"
-}

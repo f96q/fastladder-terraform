@@ -1,3 +1,7 @@
+output "fastladder" {
+  value = "${var.fastladder}"
+}
+
 output "aws_default_subnet_1a_id" {
   value = "${aws_default_subnet.1a.id}"
 }
