@@ -49,3 +49,7 @@ variable "aws_iam_instance_profile_fastladder_ec2_name" {
 variable "aws_security_group_fastladder_ec2_id" {
   default = ""
 }
+
+variable "aws_launch_configuration_fastladder_key_name" {
+  default = ""
+}

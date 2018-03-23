@@ -7,6 +7,7 @@ module "ecs" {
   aws_autoscaling_group_fastladder_min_size = "${var.aws_autoscaling_group_fastladder_min_size}"
   aws_autoscaling_group_fastladder_max_size = "${var.aws_autoscaling_group_fastladder_max_size}"
   aws_ecs_task_definition_fastladder_mysql_root_password = "${var.aws_ecs_task_definition_fastladder_mysql_root_password}"
+  aws_launch_configuration_fastladder_key_name = "${var.aws_launch_configuration_fastladder_key_name}"
   fastladder_rails_secret_key_base = "${var.fastladder_rails_secret_key_base}"
   source = "../../modules/ecs"
 }

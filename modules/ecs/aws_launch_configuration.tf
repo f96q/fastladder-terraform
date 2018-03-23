@@ -6,6 +6,7 @@ resource "aws_launch_configuration" "fastladder" {
   iam_instance_profile = "${var.aws_iam_instance_profile_fastladder_ec2_name}"
   security_groups = ["${var.aws_security_group_fastladder_ec2_id}"]
   user_data       = "${data.template_file.aws_instance_fastladder_user_data.rendered}"
+  key_name        = "${var.aws_launch_configuration_fastladder_key_name}"
   associate_public_ip_address = true
 
   lifecycle {
