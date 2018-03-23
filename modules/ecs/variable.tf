@@ -7,23 +7,23 @@ variable "aws_launch_configuration_fastladder_instance_type" {
 }
 
 variable "aws_launch_configuration_fastladder_spot_price" {
-  default = "0.0152"
+  default = 0.0152
 }
 
 variable "aws_ecs_task_definition_fastladder_rails_memory" {
-  default = "512"
+  default = 512
 }
 
 variable "aws_ecs_task_definition_fastladder_mysql_memory" {
-  default = "256"
+  default = 256
 }
 
 variable "aws_autoscaling_group_fastladder_min_size" {
-  default = "1"
+  default = 1
 }
 
 variable "aws_autoscaling_group_fastladder_max_size" {
-  default = "1"
+  default = 1
 }
 
 variable "aws_ecs_task_definition_fastladder_mysql_root_password" {
