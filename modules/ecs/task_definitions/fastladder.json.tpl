@@ -7,6 +7,13 @@
     "links": [
       "${fastladder}-mysql"
     ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "${aws_region}",
+        "awslogs-group": "${fastladder}-rails"
+      }
+    },
     "portMappings": [
       {
         "containerPort": 5000,
@@ -43,6 +50,13 @@
         "containerPath": "/docker-entrypoint-initdb.d"
       }
     ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+        "awslogs-region": "${aws_region}",
+        "awslogs-group": "${fastladder}-mysql"
+      }
+    },
     "environment": [
       {
         "name": "MYSQL_DATABASE",
